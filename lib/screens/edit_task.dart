@@ -25,6 +25,7 @@ class _EditTaskState extends State<EditTask> {
 
   String title;
   String description;
+  final _controller = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -57,11 +58,33 @@ class _EditTaskState extends State<EditTask> {
                 children: [
                   Text('Edit task', textAlign: TextAlign.center, style: kPacificoHeader),
                   Divider(),
-                  FormWidget(
-                    hintText: "New title",
-                    changedValue: (newValue) {
-                      title = newValue;
-                    },
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: kAccent),
+                      borderRadius: BorderRadius.circular(32),
+                    ),
+                    child: TextFormField(
+                      autocorrect: true,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontFamily: 'Cinzel',
+                      ),
+                      controller: _controller,
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
+                        labelText: 'New title',
+                      ),
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return 'Field is empty';
+                        }
+                        return null;
+                      },
+                      onChanged: (newValue) {
+                        title = newValue;
+                      },
+                    ),
                   ),
                   Divider(),
                   FormWidget(
@@ -79,8 +102,16 @@ class _EditTaskState extends State<EditTask> {
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
                         color: kAccent,
                         onPressed: () {
-                          Provider.of<TaskData>(context, listen: false).editTask(title, description, counter++);
-                          Navigator.pushNamed(context, TaskScreen.ROUTE);
+                          if (_formKey.currentState.validate()) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              const SnackBar(
+                                backgroundColor: kAccent,
+                                content: Text('Task edited', style: kCinzel),
+                              ),
+                            );
+                            Provider.of<TaskData>(context, listen: false).editTask(title, description, counter++);
+                            Navigator.pushNamed(context, TaskScreen.ROUTE);
+                          }
                         },
                         child: Text('Save changes', style: kButtonText),
                       ),

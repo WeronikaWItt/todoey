@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:to_do/constants.dart';
 import 'package:to_do/models/task_data.dart';
-import 'package:to_do/screens/add_task.dart';
+import 'package:to_do/screens/add_screen.dart';
 import 'package:to_do/widgets/info_dialog.dart';
 import 'package:to_do/widgets/tasks_list.dart';
 
@@ -19,16 +19,17 @@ class TaskScreen extends StatelessWidget {
             size: 30,
           ),
           onPressed: () {
-            showModalBottomSheet(
-              context: context,
-              isScrollControlled: true,
-              builder: (context) => SingleChildScrollView(
-                child: Container(
-                  padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
-                  child: AddTask(),
-                ),
-              ),
-            );
+            Navigator.pushNamed(context, Add.ROUTE);
+            // showModalBottomSheet(
+            //   context: context,
+            //   isScrollControlled: true,
+            //   builder: (context) => SingleChildScrollView(
+            //     child: Container(
+            //       padding: EdgeInsets.only(bottom: MediaQuery.of(context).viewInsets.bottom),
+            //       child: AddTask(),
+            //     ),
+            //   ),
+            // );
           }),
       body: Container(
         decoration: BoxDecoration(
