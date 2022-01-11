@@ -88,7 +88,7 @@ class _EditTaskState extends State<EditTask> {
                   ),
                   Divider(),
                   FormWidget(
-                    hintText: 'Text',
+                    hintText: 'New description',
                     //  hintText: Provider.of<TaskData>(context, listen: false).getDescription(counter),
                     changedValue: (newValue) {
                       description = newValue;

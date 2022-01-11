@@ -93,8 +93,8 @@ class _AddState extends State<Add> {
                         return null;
                       },
                       onChanged: (value) {
-                        //  prefs.setString('taskTitle', value);
                         title = value;
+                        prefs.setString('taskTitle', value);
                       },
                     ),
                   ),
@@ -102,8 +102,8 @@ class _AddState extends State<Add> {
                   FormWidget(
                     hintText: 'Description',
                     changedValue: (newValue) {
-                      //  prefs.setString('description', newValue);
                       description = newValue;
+                      prefs.setString('description', newValue);
                     },
                   ),
                   Divider(),
