@@ -125,7 +125,7 @@ class _AddState extends State<Add> {
                             Navigator.pushNamed(context, TaskScreen.ROUTE);
                           }
                         },
-                        child: Text('Save changes', style: kButtonText),
+                        child: Text('Add', style: kButtonText),
                       ),
                     ],
                   )
