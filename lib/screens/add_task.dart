@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:to_do/constants.dart';
 import 'package:to_do/models/task_data.dart';
 import 'package:to_do/screens/task_screen.dart';
@@ -19,6 +20,22 @@ class _AddState extends State<Add> {
 
   String title;
   String description;
+  String taskTitle = '';
+  SharedPreferences prefs;
+
+  @override
+  void initState() {
+    setup();
+    super.initState();
+  }
+
+  void setup() async {
+    prefs = await SharedPreferences.getInstance();
+
+    setState(() {
+      taskTitle = prefs.getString('taskTitle');
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -74,8 +91,9 @@ class _AddState extends State<Add> {
                         }
                         return null;
                       },
-                      onChanged: (newValue) {
-                        title = newValue;
+                      onChanged: (value) {
+                        prefs.setString('taskTitle', value);
+                        title = value;
                       },
                     ),
                   ),
@@ -102,6 +120,7 @@ class _AddState extends State<Add> {
                                 content: Text('Task added', style: kCinzel),
                               ),
                             );
+                            taskTitle = prefs.getString('taskTitle');
                             Provider.of<TaskData>(context, listen: false).addTask(title, description);
                             Navigator.pushNamed(context, TaskScreen.ROUTE);
                           }

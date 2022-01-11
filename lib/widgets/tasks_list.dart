@@ -40,7 +40,7 @@ class TasksList extends StatelessWidget {
                 //onTap: () => editTask(context, task),
                 onTap: () => Navigator.pushNamed(context, EditTask.ROUTE),
                 child: TasksTile(
-                  taskTitle: task.name,
+                  taskTitle: task.taskTitle,
                   taskDescription: task.description,
                   isChecked: task.isDone,
                   checkboxCallback: (checkboxCallback) {

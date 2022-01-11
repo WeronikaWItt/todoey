@@ -15,14 +15,19 @@ class TaskData extends ChangeNotifier {
     return _tasks.length;
   }
 
+  void setTitle(String title, int index) {
+    _tasks[index].taskTitle = title;
+    notifyListeners();
+  }
+
   void addTask(String newTask, String description) {
-    final task = Task(name: newTask, description: description = ' ');
+    final task = Task(taskTitle: newTask, description: description = ' ');
     _tasks.add(task);
     notifyListeners();
   }
 
   void editTask(String newTitle, String newDescription, int index) {
-    _tasks[index].name = newTitle;
+    _tasks[index].taskTitle = newTitle;
     _tasks[index].description = newDescription;
     notifyListeners();
   }
@@ -35,5 +40,17 @@ class TaskData extends ChangeNotifier {
   void deleteTask(Task task) {
     _tasks.remove(task);
     notifyListeners();
+  }
+}
+
+class TitleData extends ChangeNotifier {
+  String _title;
+  set title(String title) {
+    _title = title;
+    notifyListeners();
+  }
+
+  String get title {
+    return _title;
   }
 }

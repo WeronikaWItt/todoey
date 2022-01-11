@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:to_do/constants.dart';
 import 'package:to_do/models/task_data.dart';
-import 'package:to_do/screens/add_screen.dart';
+import 'package:to_do/screens/add_task.dart';
 import 'package:to_do/widgets/info_dialog.dart';
 import 'package:to_do/widgets/tasks_list.dart';
 

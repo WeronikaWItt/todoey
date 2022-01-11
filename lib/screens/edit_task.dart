@@ -73,7 +73,8 @@ class _EditTaskState extends State<EditTask> {
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
-                        labelText: 'New title',
+                        labelText: Provider.of<TitleData>(context).title.toString(),
+                        //labelText: 'New title',
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
@@ -82,7 +83,7 @@ class _EditTaskState extends State<EditTask> {
                         return null;
                       },
                       onChanged: (newValue) {
-                        title = newValue;
+                        Provider.of<TitleData>(context, listen: false).title = newValue;
                       },
                     ),
                   ),
