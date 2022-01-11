@@ -72,8 +72,8 @@ class _EditTaskState extends State<EditTask> {
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
-                        labelText: Provider.of<TaskData>(context, listen: false).getTitle(counter++),
-                        //labelText: 'New title',
+                        //labelText: Provider.of<TaskData>(context, listen: false).getTitle(counter),
+                        labelText: 'New title',
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
@@ -88,7 +88,8 @@ class _EditTaskState extends State<EditTask> {
                   ),
                   Divider(),
                   FormWidget(
-                    hintText: Provider.of<TaskData>(context, listen: false).getDescription(counter++),
+                    hintText: 'Text',
+                    //  hintText: Provider.of<TaskData>(context, listen: false).getDescription(counter),
                     changedValue: (newValue) {
                       description = newValue;
                     },
@@ -109,6 +110,7 @@ class _EditTaskState extends State<EditTask> {
                                 content: Text('Task edited', style: kCinzel),
                               ),
                             );
+                            _controller.clear();
                             Provider.of<TaskData>(context, listen: false).editTask(title, description, counter++);
                             Navigator.of(context).pop();
                           }

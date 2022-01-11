@@ -20,7 +20,7 @@ class _AddState extends State<Add> {
 
   String title;
   String description;
-  String taskTitle = '';
+  String taskTitle;
   SharedPreferences prefs;
 
   @override
@@ -34,6 +34,7 @@ class _AddState extends State<Add> {
 
     setState(() {
       taskTitle = prefs.getString('taskTitle');
+      description = prefs.getString('description');
     });
   }
 
@@ -92,7 +93,7 @@ class _AddState extends State<Add> {
                         return null;
                       },
                       onChanged: (value) {
-                        prefs.setString('taskTitle', value);
+                        //  prefs.setString('taskTitle', value);
                         title = value;
                       },
                     ),
@@ -101,6 +102,7 @@ class _AddState extends State<Add> {
                   FormWidget(
                     hintText: 'Description',
                     changedValue: (newValue) {
+                      //  prefs.setString('description', newValue);
                       description = newValue;
                     },
                   ),
@@ -120,7 +122,6 @@ class _AddState extends State<Add> {
                                 content: Text('Task added', style: kCinzel),
                               ),
                             );
-                            taskTitle = prefs.getString('taskTitle');
                             Provider.of<TaskData>(context, listen: false).addTask(title, description);
                             Navigator.pushNamed(context, TaskScreen.ROUTE);
                           }
