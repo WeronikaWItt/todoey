@@ -20,7 +20,10 @@ class TasksTile extends StatelessWidget {
           decoration: isChecked ? TextDecoration.lineThrough : null,
         ),
       ),
-      subtitle: Text('$taskDescription'),
+      subtitle: Text(
+        '$taskDescription',
+        style: TextStyle(fontSize: 16),
+      ),
       trailing: Checkbox(
         activeColor: kAccent,
         value: isChecked,
