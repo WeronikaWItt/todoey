@@ -3,7 +3,6 @@ import 'package:provider/provider.dart';
 import 'package:to_do/constants.dart';
 import 'package:to_do/models/task.dart';
 import 'package:to_do/models/task_data.dart';
-import 'package:to_do/screens/task_screen.dart';
 import 'package:to_do/widgets/cancel_button.dart';
 import 'package:to_do/widgets/form_widget.dart';
 
@@ -73,7 +72,7 @@ class _EditTaskState extends State<EditTask> {
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
-                        labelText: Provider.of<TitleData>(context).title.toString(),
+                        labelText: Provider.of<TaskData>(context, listen: false).getTitle(counter++),
                         //labelText: 'New title',
                       ),
                       validator: (value) {
@@ -83,13 +82,13 @@ class _EditTaskState extends State<EditTask> {
                         return null;
                       },
                       onChanged: (newValue) {
-                        Provider.of<TitleData>(context, listen: false).title = newValue;
+                        title = newValue;
                       },
                     ),
                   ),
                   Divider(),
                   FormWidget(
-                    hintText: 'New description',
+                    hintText: Provider.of<TaskData>(context, listen: false).getDescription(counter++),
                     changedValue: (newValue) {
                       description = newValue;
                     },
@@ -111,7 +110,7 @@ class _EditTaskState extends State<EditTask> {
                               ),
                             );
                             Provider.of<TaskData>(context, listen: false).editTask(title, description, counter++);
-                            Navigator.pushNamed(context, TaskScreen.ROUTE);
+                            Navigator.of(context).pop();
                           }
                         },
                         child: Text('Save changes', style: kButtonText),
