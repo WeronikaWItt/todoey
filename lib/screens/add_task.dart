@@ -23,6 +23,7 @@ class _AddState extends State<Add> {
   String taskTitle = '';
   String details = '';
   SharedPreferences prefs;
+  int index = 0;
 
   @override
   void initState() {
@@ -125,7 +126,7 @@ class _AddState extends State<Add> {
                             );
                             taskTitle = prefs.getString('taskTitle');
                             details = prefs.getString('details');
-                            Provider.of<TaskData>(context, listen: false).addTask(title, description);
+                            Provider.of<TaskData>(context, listen: false).addTask(title, description, index++);
                             Navigator.pushNamed(context, TaskScreen.ROUTE);
                           }
                         },

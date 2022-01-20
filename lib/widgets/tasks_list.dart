@@ -23,7 +23,7 @@ class TasksList extends StatelessWidget {
           itemBuilder: (context, index) {
             final task = taskData.tasks[index];
             return Slidable(
-              key: Key(task.id),
+              key: Key(task.id.toString()),
               endActionPane: ActionPane(
                 motion: ScrollMotion(),
                 children: [

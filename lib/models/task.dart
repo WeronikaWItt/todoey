@@ -1,7 +1,7 @@
 class Task {
   String taskTitle;
   String description;
-  String id;
+  int id;
   bool isDone;
 
   Task({this.taskTitle, this.description, this.id, this.isDone = false});

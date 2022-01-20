@@ -8,9 +8,9 @@ class TaskData extends ChangeNotifier {
   String editedTaskDescription;
 
   List<Task> _tasks = [
-    Task(taskTitle: 'Eat', description: 'avocado'),
-    Task(taskTitle: 'Sleep', description: '8 h'),
-    Task(taskTitle: 'Repeat', description: ''),
+    Task(taskTitle: 'Eat', description: 'avocado', id: 0),
+    Task(taskTitle: 'Sleep', description: '8 h', id: 1),
+    Task(taskTitle: 'Repeat', description: '', id: 2),
   ];
 
   List<Task> get tasks => _tasks;
@@ -18,6 +18,8 @@ class TaskData extends ChangeNotifier {
   int get taskCount {
     return _tasks.length;
   }
+
+  void getIndex() {}
 
   String getTitle(int index) {
     return _tasks[index].taskTitle;
@@ -32,12 +34,12 @@ class TaskData extends ChangeNotifier {
     notifyListeners();
   }
 
-  void addTask(String newTask, String description) {
+  void addTask(String newTask, String description, int index) {
     Task task;
     if (description == null) {
-      task = Task(taskTitle: newTask, description: description = ' ');
+      task = Task(taskTitle: newTask, description: description = ' ', id: index++);
     } else {
-      task = Task(taskTitle: newTask, description: description);
+      task = Task(taskTitle: newTask, description: description, id: index++);
     }
     _tasks.add(task);
     notifyListeners();

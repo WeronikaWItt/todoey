@@ -23,12 +23,16 @@ class _EditTaskState extends State<EditTask> {
   String title;
   String description;
   final _controller = TextEditingController();
-  int counter = 0;
 
+  int counter = 0;
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
+  }
+
+  int getIndex() {
+    return counter++;
   }
 
   @override
@@ -73,7 +77,7 @@ class _EditTaskState extends State<EditTask> {
                       style: TextStyle(
                         fontFamily: 'Cinzel',
                       ),
-                      initialValue: Provider.of<TaskData>(context, listen: false).getTitle(0),
+                      initialValue: Provider.of<TaskData>(context, listen: false).getTitle(counter++),
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
@@ -92,7 +96,7 @@ class _EditTaskState extends State<EditTask> {
                   ),
                   SizedBox(height: 15),
                   FormWidget(
-                    hintText: Provider.of<TaskData>(context, listen: false).getDescription(1),
+                    hintText: Provider.of<TaskData>(context, listen: false).getDescription(counter++),
                     changedValue: (newValue) {
                       description = newValue;
                     },
