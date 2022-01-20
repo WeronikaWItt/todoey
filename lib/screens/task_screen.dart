@@ -26,7 +26,7 @@ class TaskScreen extends StatelessWidget {
           color: kAccent,
           image: DecorationImage(
             image: AssetImage("images/background_full.png"),
-            fit: BoxFit.contain,
+            fit: BoxFit.fill,
             colorFilter: new ColorFilter.mode(Colors.black.withOpacity(0.3), BlendMode.dstATop),
           ),
         ),
