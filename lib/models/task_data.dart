@@ -7,7 +7,11 @@ class TaskData extends ChangeNotifier {
   String editedTaskTitle;
   String editedTaskDescription;
 
-  List<Task> _tasks = [];
+  List<Task> _tasks = [
+    Task(taskTitle: 'Eat', description: 'avocado'),
+    Task(taskTitle: 'Sleep', description: '8 h'),
+    Task(taskTitle: 'Repeat', description: ''),
+  ];
 
   List<Task> get tasks => _tasks;
 
