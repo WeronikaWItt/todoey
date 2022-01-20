@@ -51,7 +51,6 @@ class TaskData extends ChangeNotifier {
       _tasks[index].taskTitle = newTitle;
       _tasks[index].description = newDescription;
     }
-
     notifyListeners();
   }
 
