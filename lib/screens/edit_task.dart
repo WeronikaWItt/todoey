@@ -32,7 +32,11 @@ class _EditTaskState extends State<EditTask> {
   }
 
   int getIndex() {
-    return counter++;
+    int index;
+    setState(() {
+      index = counter++;
+    });
+    return index;
   }
 
   @override
@@ -77,7 +81,7 @@ class _EditTaskState extends State<EditTask> {
                       style: TextStyle(
                         fontFamily: 'Cinzel',
                       ),
-                      initialValue: Provider.of<TaskData>(context, listen: false).getTitle(counter++),
+                      initialValue: Provider.of<TaskData>(context, listen: false).getTitle(getIndex()),
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),

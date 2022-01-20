@@ -19,8 +19,6 @@ class TaskData extends ChangeNotifier {
     return _tasks.length;
   }
 
-  void getIndex() {}
-
   String getTitle(int index) {
     return _tasks[index].taskTitle;
   }

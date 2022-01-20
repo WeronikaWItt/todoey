@@ -37,7 +37,6 @@ class TasksList extends StatelessWidget {
                 ],
               ),
               child: GestureDetector(
-                //onTap: () => editTask(context, task),
                 onTap: () => Navigator.pushNamed(context, EditTask.ROUTE),
                 child: TasksTile(
                   taskTitle: task.taskTitle,
