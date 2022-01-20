@@ -31,14 +31,6 @@ class _EditTaskState extends State<EditTask> {
     super.initState();
   }
 
-  int getIndex() {
-    int index;
-    setState(() {
-      index = counter++;
-    });
-    return index;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -81,7 +73,7 @@ class _EditTaskState extends State<EditTask> {
                       style: TextStyle(
                         fontFamily: 'Cinzel',
                       ),
-                      initialValue: Provider.of<TaskData>(context, listen: false).getTitle(getIndex()),
+                      initialValue: Provider.of<TaskData>(context, listen: false).getTitle(counter),
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
@@ -100,7 +92,7 @@ class _EditTaskState extends State<EditTask> {
                   ),
                   SizedBox(height: 15),
                   FormWidget(
-                    hintText: Provider.of<TaskData>(context, listen: false).getDescription(counter++),
+                    hintText: Provider.of<TaskData>(context, listen: false).getDescription(counter),
                     changedValue: (newValue) {
                       description = newValue;
                     },
