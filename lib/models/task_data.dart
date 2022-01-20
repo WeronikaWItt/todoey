@@ -44,8 +44,14 @@ class TaskData extends ChangeNotifier {
   }
 
   void editTask(String newTitle, String newDescription, int index) {
-    _tasks[index].taskTitle = newTitle;
-    _tasks[index].description = newDescription;
+    if (newTitle == null || newDescription == null) {
+      _tasks[index].taskTitle = _tasks[index].taskTitle;
+      _tasks[index].description = ' ';
+    } else {
+      _tasks[index].taskTitle = newTitle;
+      _tasks[index].description = newDescription;
+    }
+
     notifyListeners();
   }
 
