@@ -6,8 +6,6 @@ import 'package:to_do/models/task_data.dart';
 import 'package:to_do/widgets/cancel_button.dart';
 import 'package:to_do/widgets/form_widget.dart';
 
-int counter = 0;
-
 class EditTask extends StatefulWidget {
   static const ROUTE = '/edit';
 
@@ -25,6 +23,14 @@ class _EditTaskState extends State<EditTask> {
   String title;
   String description;
   final _controller = TextEditingController();
+  int counter = 0;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    counter++;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -68,11 +74,12 @@ class _EditTaskState extends State<EditTask> {
                       style: TextStyle(
                         fontFamily: 'Cinzel',
                       ),
-                      controller: _controller,
+                      initialValue: Provider.of<TaskData>(context, listen: false).getTitle(counter),
+                      //controller: _controller,
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
-                        labelText: Provider.of<TaskData>(context, listen: false).getTitle(counter),
+                        // labelText: Provider.of<TaskData>(context, listen: false).getTitle(counter),
                         //labelText: 'New title',
                       ),
                       validator: (value) {
@@ -88,7 +95,6 @@ class _EditTaskState extends State<EditTask> {
                   ),
                   Divider(),
                   FormWidget(
-                    //hintText: 'New description',
                     hintText: Provider.of<TaskData>(context, listen: false).getDescription(counter),
                     changedValue: (newValue) {
                       description = newValue;
