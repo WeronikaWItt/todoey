@@ -38,13 +38,13 @@ class TaskScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   InfoDialog(),
-                  Divider(),
+                  SizedBox(height: 10),
                   Padding(
                     padding: const EdgeInsets.only(left: 20.0),
                     child: Text('Today is ${DateTime.now().day}.${DateTime.now().month}.${DateTime.now().year}',
                         style: kPacifico),
                   ),
-                  Divider(),
+                  SizedBox(height: 10),
                   Padding(
                     padding: const EdgeInsets.only(left: 25.0),
                     child: Text('${Provider.of<TaskData>(context).taskCount} Tasks', style: kCinzel),

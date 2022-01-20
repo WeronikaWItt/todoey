@@ -29,7 +29,6 @@ class _EditTaskState extends State<EditTask> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    counter++;
   }
 
   @override
@@ -62,7 +61,7 @@ class _EditTaskState extends State<EditTask> {
               child: Column(
                 children: [
                   Text('Edit task', textAlign: TextAlign.center, style: kPacificoHeader),
-                  Divider(),
+                  SizedBox(height: 20),
                   Container(
                     decoration: BoxDecoration(
                       border: Border.all(color: kAccent),
@@ -75,12 +74,10 @@ class _EditTaskState extends State<EditTask> {
                         fontFamily: 'Cinzel',
                       ),
                       initialValue: Provider.of<TaskData>(context, listen: false).getTitle(counter),
-                      //controller: _controller,
                       decoration: InputDecoration(
                         border: InputBorder.none,
                         contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
-                        // labelText: Provider.of<TaskData>(context, listen: false).getTitle(counter),
-                        //labelText: 'New title',
+                        labelText: 'Title',
                       ),
                       validator: (value) {
                         if (value == null || value.isEmpty) {
@@ -93,14 +90,14 @@ class _EditTaskState extends State<EditTask> {
                       },
                     ),
                   ),
-                  Divider(),
+                  SizedBox(height: 15),
                   FormWidget(
                     hintText: Provider.of<TaskData>(context, listen: false).getDescription(counter),
                     changedValue: (newValue) {
                       description = newValue;
                     },
                   ),
-                  Divider(),
+                  SizedBox(height: 20),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
