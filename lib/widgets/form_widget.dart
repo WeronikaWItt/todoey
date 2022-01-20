@@ -16,7 +16,7 @@ class FormWidget extends StatelessWidget {
       ),
       child: TextFormField(
         autocorrect: true,
-        textAlign: TextAlign.center,
+        textAlign: TextAlign.left,
         style: TextStyle(
           fontFamily: 'Cinzel',
         ),
