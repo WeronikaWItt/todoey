@@ -22,7 +22,7 @@ class TasksTile extends StatelessWidget {
       ),
       subtitle: Text(
         '$taskDescription',
-        style: TextStyle(fontSize: 16),
+        style: TextStyle(fontSize: 16, fontFamily: 'Cinzel'),
       ),
       trailing: Checkbox(
         activeColor: kAccent,
