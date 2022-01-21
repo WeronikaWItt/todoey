@@ -10,7 +10,7 @@ class TaskData extends ChangeNotifier {
   List<Task> _tasks = [
     Task(taskTitle: 'Eat', description: 'avocado', id: 0),
     Task(taskTitle: 'Sleep', description: '8 h', id: 1),
-    Task(taskTitle: 'Repeat', description: '', id: 2),
+    Task(taskTitle: 'Repeat', description: 'Dodac task w któym jest długi opis', id: 2),
   ];
 
   List<Task> get tasks => _tasks;
@@ -51,6 +51,7 @@ class TaskData extends ChangeNotifier {
       _tasks[index].taskTitle = newTitle;
       _tasks[index].description = newDescription;
     }
+    print(index);
 
     notifyListeners();
   }

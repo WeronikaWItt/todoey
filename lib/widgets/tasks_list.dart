@@ -10,7 +10,8 @@ class TasksList extends StatelessWidget {
   void editTask(BuildContext context, Task task) => Navigator.of(context).push(
         MaterialPageRoute(
           builder: (context) => EditTask(
-            task: task,
+            //task: task,
+            task.id,
           ),
         ),
       );
@@ -37,7 +38,8 @@ class TasksList extends StatelessWidget {
                 ],
               ),
               child: GestureDetector(
-                onTap: () => Navigator.pushNamed(context, EditTask.ROUTE),
+                onTap: () => editTask(context, task),
+                // onTap: () => Navigator.push(context, MaterialPageRoute(builder: (context) => EditTask(task.id))),
                 child: TasksTile(
                   taskTitle: task.taskTitle,
                   taskDescription: task.description,
