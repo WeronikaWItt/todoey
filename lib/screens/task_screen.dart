@@ -33,7 +33,7 @@ class TaskScreen extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              padding: EdgeInsets.only(top: 60.0, right: 90.0, bottom: 10.0, left: 30.0),
+              padding: EdgeInsets.only(top: 60.0, right: 50.0, bottom: 10.0, left: 30.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -43,11 +43,8 @@ class TaskScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Expanded(
-                        flex: 6,
-                        child: Text('${Provider.of<TaskData>(context).taskCount} Tasks', style: kCinzel),
-                      ),
-                      Expanded(child: InfoDialog()),
+                      Text('${Provider.of<TaskData>(context).taskCount} Tasks', style: kCinzel),
+                      InfoDialog(),
                     ],
                   ),
                 ],
