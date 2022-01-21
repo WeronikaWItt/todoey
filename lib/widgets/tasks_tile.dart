@@ -22,6 +22,8 @@ class TasksTile extends StatelessWidget {
       ),
       subtitle: Text(
         '$taskDescription',
+        maxLines: null,
+        softWrap: true,
         style: TextStyle(fontSize: 16, fontFamily: 'Cinzel'),
       ),
       trailing: Checkbox(

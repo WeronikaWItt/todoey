@@ -16,7 +16,7 @@ class FormWidget extends StatelessWidget {
       ),
       child: TextFormField(
         autocorrect: true,
-        maxLines: 5,
+        maxLines: null,
         textAlign: TextAlign.left,
         style: TextStyle(fontSize: 16, fontFamily: 'Cinzel'),
         initialValue: initText,
