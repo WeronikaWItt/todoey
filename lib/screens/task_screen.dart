@@ -46,7 +46,7 @@ class _TaskScreenState extends State<TaskScreen> {
               label: 'Todos'),
           BottomNavigationBarItem(
               icon: Icon(
-                Icons.info,
+                Icons.info_outline_rounded,
                 color: Colors.white,
               ),
               label: 'Info'),
