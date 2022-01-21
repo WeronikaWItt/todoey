@@ -21,7 +21,6 @@ class MyApp extends StatelessWidget {
         initialRoute: TaskScreen.ROUTE,
         routes: {
           TaskScreen.ROUTE: (context) => TaskScreen(),
-          //EditTask.ROUTE: (context) => EditTask(),
           Add.ROUTE: (context) => Add(),
         },
       ),

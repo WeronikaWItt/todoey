@@ -6,9 +6,6 @@ import 'package:to_do/widgets/cancel_button.dart';
 import 'package:to_do/widgets/form_widget.dart';
 
 class EditTask extends StatefulWidget {
-  static const ROUTE = '/edit';
-
-  //final Task task;
   final int index;
   const EditTask(this.index);
 

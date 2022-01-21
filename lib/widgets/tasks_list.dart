@@ -10,7 +10,6 @@ class TasksList extends StatelessWidget {
   void editTask(BuildContext context, Task task) => Navigator.of(context).push(
         MaterialPageRoute(
           builder: (context) => EditTask(
-            //task: task,
             task.id,
           ),
         ),
