@@ -6,12 +6,52 @@ import 'package:to_do/screens/add_task.dart';
 import 'package:to_do/widgets/info_dialog.dart';
 import 'package:to_do/widgets/tasks_list.dart';
 
-class TaskScreen extends StatelessWidget {
+class TaskScreen extends StatefulWidget {
   static const ROUTE = '/task';
+
+  @override
+  State<TaskScreen> createState() => _TaskScreenState();
+}
+
+class _TaskScreenState extends State<TaskScreen> {
+  int _selectedIndex = 0;
+
+  static List<Widget> _widgetOptions = <Widget>[
+    TasksList(),
+    InfoDialog(),
+  ];
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: kAccent,
+        currentIndex: _selectedIndex,
+        selectedItemColor: Colors.white,
+        selectedFontSize: 18,
+        showUnselectedLabels: false,
+        onTap: _onItemTapped,
+        items: [
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.list,
+                color: Colors.white,
+              ),
+              label: 'Todos'),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.info,
+                color: Colors.white,
+              ),
+              label: 'Info'),
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
           backgroundColor: kAccent,
           child: Icon(
@@ -35,18 +75,11 @@ class TaskScreen extends StatelessWidget {
             Container(
               padding: EdgeInsets.only(top: 60.0, right: 50.0, bottom: 10.0, left: 30.0),
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 10),
                   Text('${DateTime.now().day}.${DateTime.now().month}.${DateTime.now().year}', style: kPacifico),
                   SizedBox(height: 10),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Text('${Provider.of<TaskData>(context).taskCount} Tasks', style: kCinzel),
-                      InfoDialog(),
-                    ],
-                  ),
+                  Text('${Provider.of<TaskData>(context).taskCount} Tasks', style: kCinzel),
                 ],
               ),
             ),
@@ -56,7 +89,8 @@ class TaskScreen extends StatelessWidget {
                 decoration: BoxDecoration(
                   color: Colors.white,
                 ),
-                child: TasksList(),
+                child: _widgetOptions.elementAt(_selectedIndex),
+                // /child: TasksList(),
               ),
             ),
           ],
