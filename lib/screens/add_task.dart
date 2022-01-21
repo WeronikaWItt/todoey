@@ -102,7 +102,7 @@ class _AddState extends State<Add> {
                   ),
                   Divider(),
                   FormWidget(
-                    hintText: 'Description',
+                    initText: 'Description',
                     changedValue: (value) {
                       description = value;
                       prefs.setString('details', value);

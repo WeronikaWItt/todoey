@@ -52,41 +52,47 @@ class _EditTaskState extends State<EditTask> {
               child: Column(
                 children: [
                   Text('Edit task', textAlign: TextAlign.center, style: kPacificoHeader),
-                  SizedBox(height: 20),
-                  Container(
-                    decoration: BoxDecoration(
-                      border: Border.all(color: kAccent),
-                      borderRadius: BorderRadius.circular(32),
-                    ),
-                    child: TextFormField(
-                      autocorrect: true,
-                      textAlign: TextAlign.left,
-                      style: TextStyle(
-                        fontFamily: 'Cinzel',
+                  SizedBox(height: 15),
+                  Expanded(
+                    flex: 1,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        border: Border.all(color: kAccent),
+                        borderRadius: BorderRadius.circular(32),
                       ),
-                      initialValue: Provider.of<TaskData>(context, listen: false).getTitle(widget.index),
-                      decoration: InputDecoration(
-                        border: InputBorder.none,
-                        contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
-                        labelText: 'Title',
+                      child: TextFormField(
+                        autocorrect: true,
+                        textAlign: TextAlign.left,
+                        style: TextStyle(
+                          fontFamily: 'Cinzel',
+                        ),
+                        initialValue: Provider.of<TaskData>(context, listen: false).getTitle(widget.index),
+                        decoration: InputDecoration(
+                          border: InputBorder.none,
+                          contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
+                          labelText: 'Title',
+                        ),
+                        validator: (value) {
+                          if (value == null || value.isEmpty) {
+                            return 'Field is empty';
+                          }
+                          return null;
+                        },
+                        onChanged: (newValue) {
+                          title = newValue;
+                        },
                       ),
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Field is empty';
-                        }
-                        return null;
-                      },
-                      onChanged: (newValue) {
-                        title = newValue;
-                      },
                     ),
                   ),
                   SizedBox(height: 15),
-                  FormWidget(
-                    hintText: Provider.of<TaskData>(context, listen: false).getDescription(widget.index),
-                    changedValue: (newValue) {
-                      description = newValue;
-                    },
+                  Expanded(
+                    flex: 2,
+                    child: FormWidget(
+                      initText: Provider.of<TaskData>(context, listen: false).getDescription(widget.index),
+                      changedValue: (newValue) {
+                        description = newValue;
+                      },
+                    ),
                   ),
                   SizedBox(height: 20),
                   Row(

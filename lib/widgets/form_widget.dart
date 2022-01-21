@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 import '../constants.dart';
 
 class FormWidget extends StatelessWidget {
-  final String hintText;
+  final String initText;
   final Function changedValue;
-  const FormWidget({Key key, this.hintText, this.changedValue}) : super(key: key);
+  const FormWidget({Key key, this.initText, this.changedValue}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -16,15 +16,14 @@ class FormWidget extends StatelessWidget {
       ),
       child: TextFormField(
         autocorrect: true,
+        maxLines: 5,
         textAlign: TextAlign.left,
-        style: TextStyle(
-          fontFamily: 'Cinzel',
-        ),
+        style: TextStyle(fontSize: 16, fontFamily: 'Cinzel'),
+        initialValue: initText,
         decoration: InputDecoration(
-          border: InputBorder.none,
-          contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
-          labelText: hintText,
-        ),
+            border: InputBorder.none,
+            contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
+            labelText: 'Description'),
         onChanged: changedValue,
       ),
     );
