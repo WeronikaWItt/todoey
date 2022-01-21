@@ -16,6 +16,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider<TaskData>(create: (context) => TaskData()),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Todoey',
         initialRoute: TaskScreen.ROUTE,
         routes: {
