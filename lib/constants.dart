@@ -1,12 +1,10 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 
 const kAccent = Color(0xff8e24aa);
 
 const kPacifico = TextStyle(
   color: Colors.white,
-  fontSize: 35,
+  fontSize: 30,
   fontFamily: 'Pacifico',
 );
 
