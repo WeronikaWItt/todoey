@@ -13,7 +13,8 @@ class InfoDialog extends StatelessWidget {
       padding: const EdgeInsets.only(left: 10.0),
       child: IconButton(
         color: Colors.white,
-        iconSize: 40,
+        iconSize: 25,
+        padding: const EdgeInsets.only(left: 50),
         onPressed: () => showDialog(
             context: context,
             builder: (BuildContext context) {

@@ -33,21 +33,22 @@ class TaskScreen extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              padding: EdgeInsets.only(top: 70.0, right: 90.0, bottom: 20.0),
+              padding: EdgeInsets.only(top: 60.0, right: 90.0, bottom: 10.0, left: 30.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  InfoDialog(),
                   SizedBox(height: 10),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20.0),
-                    child: Text('Today is ${DateTime.now().day}.${DateTime.now().month}.${DateTime.now().year}',
-                        style: kPacifico),
-                  ),
+                  Text('${DateTime.now().day}.${DateTime.now().month}.${DateTime.now().year}', style: kPacifico),
                   SizedBox(height: 10),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 25.0),
-                    child: Text('${Provider.of<TaskData>(context).taskCount} Tasks', style: kCinzel),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        flex: 6,
+                        child: Text('${Provider.of<TaskData>(context).taskCount} Tasks', style: kCinzel),
+                      ),
+                      Expanded(child: InfoDialog()),
+                    ],
                   ),
                 ],
               ),
