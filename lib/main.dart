@@ -14,7 +14,6 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<TaskData>(create: (context) => TaskData()),
-        ChangeNotifierProvider<TitleData>(create: (context) => TitleData())
       ],
       child: MaterialApp(
         title: 'Todoey',

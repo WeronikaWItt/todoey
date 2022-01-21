@@ -58,23 +58,17 @@ class TaskData extends ChangeNotifier {
 
   void updateTaskStatus(Task task) {
     task.toggleDone();
+
     notifyListeners();
+  }
+
+  void getDone() {
+    List<Task> _done = [];
+    _done = tasks.takeWhile((element) => element.isDone = true).toList();
   }
 
   void deleteTask(Task task) {
     _tasks.remove(task);
     notifyListeners();
-  }
-}
-
-class TitleData extends ChangeNotifier {
-  String _title;
-  set title(String title) {
-    _title = title;
-    notifyListeners();
-  }
-
-  String get title {
-    return _title;
   }
 }
