@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:to_do/constants.dart';
 import 'package:to_do/models/task_data.dart';
 import 'package:to_do/screens/add_task.dart';
+import 'package:to_do/widgets/done_tasks.dart';
 import 'package:to_do/widgets/info_dialog.dart';
 import 'package:to_do/widgets/tasks_list.dart';
 
@@ -18,6 +19,7 @@ class _TaskScreenState extends State<TaskScreen> {
 
   static List<Widget> _widgetOptions = <Widget>[
     TasksList(),
+    DoneTasks(),
     InfoDialog(),
   ];
 
@@ -44,6 +46,12 @@ class _TaskScreenState extends State<TaskScreen> {
                 color: Colors.white,
               ),
               label: 'Todos'),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.check_circle_outline,
+                color: Colors.white,
+              ),
+              label: 'Done'),
           BottomNavigationBarItem(
               icon: Icon(
                 Icons.info_outline_rounded,
