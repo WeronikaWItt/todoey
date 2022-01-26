@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:to_do/constants.dart';
+import 'package:to_do/models/task.dart';
 
 class TasksTile extends StatelessWidget {
   final bool isChecked;
   final String taskTitle;
   final String taskDescription;
   final Function checkboxCallback;
+  final Task task;
 
-  TasksTile({this.isChecked, this.taskTitle, this.checkboxCallback, this.taskDescription});
+  TasksTile({this.isChecked, this.taskTitle, this.checkboxCallback, this.taskDescription, this.task});
 
   @override
   Widget build(BuildContext context) {
