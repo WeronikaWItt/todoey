@@ -33,7 +33,7 @@ class TaskWidget extends StatelessWidget {
 
   void editTask(BuildContext context, Task task) => Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (context) => EditTask(task.id),
+          builder: (context) => EditTask(task),
         ),
       );
 
@@ -46,7 +46,7 @@ class TaskWidget extends StatelessWidget {
         onTap: () => editTask(context, task),
         child: SingleChildScrollView(
           child: Card(
-            color: Color(0xffFDF9FF),
+            color: kLightPurple,
             elevation: 1,
             margin: EdgeInsets.only(top: 5, bottom: 5),
             child: Padding(
