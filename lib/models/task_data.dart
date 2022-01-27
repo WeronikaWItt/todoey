@@ -13,10 +13,7 @@ class TaskData extends ChangeNotifier {
     Task(taskTitle: 'Repeat', description: 'Dodac task w któym jest długi opis', id: 2),
   ];
 
-  List<Task> _done = [];
-
-  List<Task> get tasks => _tasks;
-  List<Task> get done => _done;
+  List<Task> get tasks => _tasks.where((todo) => todo.isDone == false).toList();
 
   int get taskCount {
     return _tasks.length;
