@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:to_do/constants.dart';
+import 'package:to_do/models/task.dart';
 import 'package:to_do/models/task_data.dart';
-import 'package:to_do/screens/task_screen.dart';
 import 'package:to_do/widgets/cancel_button.dart';
 
 class Add extends StatefulWidget {
@@ -18,7 +18,7 @@ class _AddState extends State<Add> {
   final _controller = TextEditingController();
 
   String title;
-  String description;
+  String description = '';
   String taskTitle = '';
   String details = '';
   SharedPreferences prefs;
@@ -122,6 +122,7 @@ class _AddState extends State<Add> {
                       ),
                       onChanged: (value) {
                         description = value;
+
                         prefs.setString('details', value);
                       },
                     ),
@@ -140,14 +141,17 @@ class _AddState extends State<Add> {
                           if (_formKey.currentState.validate()) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
-                                backgroundColor: kAccent,
+                                backgroundColor: kLightPurple,
                                 content: Text('Task added', style: kSnackBarCinzel),
                               ),
                             );
                             taskTitle = prefs.getString('taskTitle');
                             details = prefs.getString('details');
-                            Provider.of<TaskData>(context, listen: false).addTask(title, description, index++);
-                            Navigator.pushNamed(context, TaskScreen.ROUTE);
+
+                            final task = Task(id: index++, taskTitle: title, description: description, isDone: false);
+
+                            Provider.of<TaskData>(context, listen: false).addTask(task);
+                            Navigator.of(context).pop();
                           }
                         },
                         child: Text('Add', style: kButtonText),

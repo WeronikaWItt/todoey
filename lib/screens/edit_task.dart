@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:to_do/constants.dart';
+import 'package:to_do/models/task.dart';
 import 'package:to_do/models/task_data.dart';
 import 'package:to_do/widgets/cancel_button.dart';
 import 'package:to_do/widgets/form_widget.dart';
 
 class EditTask extends StatefulWidget {
-  final int index;
-  const EditTask(this.index);
+  final Task task;
+  const EditTask(this.task);
 
   @override
   State<EditTask> createState() => _EditTaskState();
@@ -64,7 +65,7 @@ class _EditTaskState extends State<EditTask> {
                         style: TextStyle(
                           fontFamily: 'Cinzel',
                         ),
-                        initialValue: Provider.of<TaskData>(context, listen: false).getTitle(widget.index),
+                        initialValue: widget.task.taskTitle,
                         decoration: InputDecoration(
                           border: InputBorder.none,
                           contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
@@ -88,7 +89,7 @@ class _EditTaskState extends State<EditTask> {
                   Expanded(
                     flex: 2,
                     child: FormWidget(
-                      initText: Provider.of<TaskData>(context, listen: false).getDescription(widget.index),
+                      initText: widget.task.description,
                       changedValue: (newValue) {
                         setState(() {
                           this.description = newValue;
@@ -108,12 +109,13 @@ class _EditTaskState extends State<EditTask> {
                           if (_formKey.currentState.validate()) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
-                                backgroundColor: kAccent,
+                                backgroundColor: kLightPurple,
                                 content: Text('Task edited', style: kSnackBarCinzel),
                               ),
                             );
                             _controller.clear();
-                            Provider.of<TaskData>(context, listen: false).editTask(title, description, widget.index);
+                            Provider.of<TaskData>(context, listen: false).editTask(widget.task, title, description);
+
                             Navigator.of(context).pop();
                           }
                         },
