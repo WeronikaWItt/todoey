@@ -5,7 +5,6 @@ import 'package:to_do/constants.dart';
 import 'package:to_do/models/task_data.dart';
 import 'package:to_do/screens/task_screen.dart';
 import 'package:to_do/widgets/cancel_button.dart';
-import 'package:to_do/widgets/form_widget.dart';
 
 class Add extends StatefulWidget {
   static const ROUTE = '/add';
@@ -70,7 +69,9 @@ class _AddState extends State<Add> {
               child: Column(
                 children: [
                   Text('New task', textAlign: TextAlign.center, style: kPacificoHeader),
-                  Divider(),
+                  SizedBox(
+                    height: 15,
+                  ),
                   Container(
                     decoration: BoxDecoration(
                       border: Border.all(color: kAccent),
@@ -100,15 +101,34 @@ class _AddState extends State<Add> {
                       },
                     ),
                   ),
-                  Divider(),
-                  FormWidget(
-                    initText: 'Description',
-                    changedValue: (value) {
-                      description = value;
-                      prefs.setString('details', value);
-                    },
+                  SizedBox(
+                    height: 15,
                   ),
-                  Divider(),
+                  Container(
+                    decoration: BoxDecoration(
+                      border: Border.all(color: kAccent),
+                      borderRadius: BorderRadius.circular(32),
+                    ),
+                    child: TextFormField(
+                      autocorrect: true,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        fontFamily: 'Cinzel',
+                      ),
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        contentPadding: EdgeInsets.only(left: 15, bottom: 11, top: 11, right: 15),
+                        labelText: 'Description',
+                      ),
+                      onChanged: (value) {
+                        description = value;
+                        prefs.setString('details', value);
+                      },
+                    ),
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
