@@ -14,6 +14,7 @@ class TaskData extends ChangeNotifier {
   ];
 
   List<Task> get tasks => _tasks.where((todo) => todo.isDone == false).toList();
+  List<Task> get tasksCompleted => _tasks.where((todo) => todo.isDone == true).toList();
 
   int get taskCount {
     return _tasks.length;
@@ -25,11 +26,6 @@ class TaskData extends ChangeNotifier {
 
   String getDescription(int index) {
     return _tasks[index].description;
-  }
-
-  void setTitle(String title, int index) {
-    _tasks[index].taskTitle = title;
-    notifyListeners();
   }
 
   void addTask(String newTask, String description, int index) {
@@ -61,8 +57,6 @@ class TaskData extends ChangeNotifier {
 
     notifyListeners();
   }
-
-  List<Task> get tasksCompleted => _tasks.where((todo) => todo.isDone == true).toList();
 
   void deleteTask(Task task) {
     _tasks.remove(task);
