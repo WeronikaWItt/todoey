@@ -93,7 +93,7 @@ class _TaskScreenState extends State<TaskScreen> {
             ),
             Expanded(
               child: Container(
-                padding: EdgeInsets.only(left: 20, right: 20, bottom: 50, top: 0),
+                padding: EdgeInsets.only(left: 10, right: 10, bottom: 50, top: 0),
                 decoration: BoxDecoration(
                   color: Colors.white,
                 ),
