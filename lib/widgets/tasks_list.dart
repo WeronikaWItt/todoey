@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:provider/provider.dart';
+import 'package:to_do/constants.dart';
 import 'package:to_do/models/task.dart';
 import 'package:to_do/models/task_data.dart';
 import 'package:to_do/screens/edit_task.dart';
-import 'package:to_do/widgets/tasks_tile.dart';
+import 'package:to_do/widgets/task_widget.dart';
 
 class TasksList extends StatelessWidget {
   void editTask(BuildContext context, Task task) => Navigator.of(context).push(
@@ -17,44 +17,24 @@ class TasksList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Consumer<TaskData>(
-        builder: (context, taskData, child) {
-          return ListView.builder(
-            physics: const AlwaysScrollableScrollPhysics(),
+    final provider = Provider.of<TaskData>(context);
+    final tasks = provider.tasks;
+    return tasks.isEmpty
+        ? Center(
+            child: Text(
+              "No tasks",
+              style: kPacificoHeader,
+            ),
+          )
+        : ListView.builder(
+            physics: BouncingScrollPhysics(),
+            padding: EdgeInsets.all(16),
+            itemCount: tasks.length,
             itemBuilder: (context, index) {
-              final task = taskData.tasks[index];
-              return Slidable(
-                key: Key(task.id.toString()),
-                endActionPane: ActionPane(
-                  motion: ScrollMotion(),
-                  children: [
-                    SlidableAction(
-                      onPressed: (BuildContext context) => taskData.deleteTask(task),
-                      backgroundColor: Color(0xFFFE4A49),
-                      foregroundColor: Colors.white,
-                      icon: Icons.delete,
-                      label: 'Delete',
-                    ),
-                  ],
-                ),
-                child: GestureDetector(
-                  onTap: () => editTask(context, task),
-                  child: TasksTile(
-                    taskTitle: task.taskTitle,
-                    taskDescription: task.description,
-                    isChecked: task.isDone,
-                    checkboxCallback: (checkboxCallback) {
-                      taskData.updateTaskStatus(task);
-                    },
-                  ),
-                ),
-              );
+              final task = tasks[index];
+
+              return TaskWidget(task: task);
             },
-            itemCount: taskData.taskCount,
           );
-        },
-      ),
-    );
   }
 }
