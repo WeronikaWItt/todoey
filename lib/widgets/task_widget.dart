@@ -61,7 +61,7 @@ class TaskWidget extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          '${task.taskTitle}',
+                          '${task.taskTitle}'.toLowerCase(),
                           style: TextStyle(
                             fontFamily: 'Pacifico',
                             fontSize: 23,
