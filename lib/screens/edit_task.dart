@@ -20,8 +20,6 @@ class _EditTaskState extends State<EditTask> {
   String description;
   final _controller = TextEditingController();
 
-  int counter = 0;
-
   @override
   Widget build(BuildContext context) {
     return Container(

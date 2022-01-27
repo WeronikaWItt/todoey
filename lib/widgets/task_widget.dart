@@ -34,9 +34,7 @@ class TaskWidget extends StatelessWidget {
 
   void editTask(BuildContext context, Task task) => Navigator.of(context).push(
         MaterialPageRoute(
-          builder: (context) => EditTask(
-            task.id,
-          ),
+          builder: (context) => EditTask(task.id),
         ),
       );
 

@@ -31,9 +31,9 @@ class TaskData extends ChangeNotifier {
   void addTask(String newTask, String description, int index) {
     Task task;
     if (description == null) {
-      task = Task(taskTitle: newTask, description: description = ' ', id: index++);
+      task = Task(taskTitle: newTask, description: description = ' ', id: index);
     } else {
-      task = Task(taskTitle: newTask, description: description, id: index++);
+      task = Task(taskTitle: newTask, description: description, id: index);
     }
     _tasks.add(task);
     notifyListeners();
