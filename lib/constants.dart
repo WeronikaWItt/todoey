@@ -15,6 +15,13 @@ const kCinzel = TextStyle(
   fontWeight: FontWeight.bold,
 );
 
+const kSnackBarCinzel = TextStyle(
+  fontSize: 15,
+  color: Colors.white,
+  fontFamily: 'Cinzel',
+  fontWeight: FontWeight.bold,
+);
+
 const kInfoText = TextStyle(
   fontSize: 20,
   fontFamily: 'Cinzel',

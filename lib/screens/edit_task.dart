@@ -77,7 +77,9 @@ class _EditTaskState extends State<EditTask> {
                           return null;
                         },
                         onChanged: (newValue) {
-                          title = newValue;
+                          setState(() {
+                            this.title = newValue;
+                          });
                         },
                       ),
                     ),
@@ -88,7 +90,9 @@ class _EditTaskState extends State<EditTask> {
                     child: FormWidget(
                       initText: Provider.of<TaskData>(context, listen: false).getDescription(widget.index),
                       changedValue: (newValue) {
-                        description = newValue;
+                        setState(() {
+                          this.description = newValue;
+                        });
                       },
                     ),
                   ),
@@ -105,7 +109,7 @@ class _EditTaskState extends State<EditTask> {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
                                 backgroundColor: kAccent,
-                                content: Text('Task edited', style: kCinzel),
+                                content: Text('Task edited', style: kSnackBarCinzel),
                               ),
                             );
                             _controller.clear();

@@ -141,7 +141,7 @@ class _AddState extends State<Add> {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
                                 backgroundColor: kAccent,
-                                content: Text('Task added', style: kCinzel),
+                                content: Text('Task added', style: kSnackBarCinzel),
                               ),
                             );
                             taskTitle = prefs.getString('taskTitle');
