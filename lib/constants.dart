@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 const kAccent = Color(0xff8e24aa);
+const kLightPurple = Color(0xffFDF9FF);
 
 const kPacifico = TextStyle(
   color: Colors.white,
@@ -17,7 +18,7 @@ const kCinzel = TextStyle(
 
 const kSnackBarCinzel = TextStyle(
   fontSize: 15,
-  color: Colors.white,
+  color: Colors.black,
   fontFamily: 'Cinzel',
   fontWeight: FontWeight.bold,
 );
