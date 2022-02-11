@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:to_do/constants.dart';
+import 'package:to_do/models/shared_preferences.dart';
 import 'package:to_do/models/task.dart';
 import 'package:to_do/models/task_data.dart';
 import 'package:to_do/widgets/cancel_button.dart';
@@ -19,24 +19,13 @@ class _AddState extends State<Add> {
 
   String title;
   String description = '';
-  String taskTitle = '';
-  String details = '';
-  SharedPreferences prefs;
   int index = 0;
 
   @override
   void initState() {
-    setup();
     super.initState();
-  }
-
-  void setup() async {
-    prefs = await SharedPreferences.getInstance();
-
-    setState(() {
-      taskTitle = prefs.getString('taskTitle');
-      details = prefs.getString('details');
-    });
+    title = Prefs.getTitle() ?? ' ';
+    description = Prefs.getDescription() ?? ' ';
   }
 
   @override
@@ -97,7 +86,6 @@ class _AddState extends State<Add> {
                       },
                       onChanged: (value) {
                         title = value;
-                        prefs.setString('taskTitle', value);
                       },
                     ),
                   ),
@@ -122,8 +110,6 @@ class _AddState extends State<Add> {
                       ),
                       onChanged: (value) {
                         description = value;
-
-                        prefs.setString('details', value);
                       },
                     ),
                   ),
@@ -137,7 +123,7 @@ class _AddState extends State<Add> {
                       MaterialButton(
                         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(50)),
                         color: kAccent,
-                        onPressed: () {
+                        onPressed: () async {
                           if (_formKey.currentState.validate()) {
                             ScaffoldMessenger.of(context).showSnackBar(
                               const SnackBar(
@@ -145,12 +131,14 @@ class _AddState extends State<Add> {
                                 content: Text('Task added', style: kSnackBarCinzel),
                               ),
                             );
-                            taskTitle = prefs.getString('taskTitle');
-                            details = prefs.getString('details');
 
                             final task = Task(id: index++, taskTitle: title, description: description, isDone: false);
 
                             Provider.of<TaskData>(context, listen: false).addTask(task);
+
+                            await Prefs.setTitle(title);
+                            await Prefs.setDescription(description);
+
                             Navigator.of(context).pop();
                           }
                         },
